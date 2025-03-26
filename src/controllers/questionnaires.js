@@ -1,4 +1,5 @@
 import {
+  createQuestionnaire,
   getAllQuestionnaires,
   getQuestionnaireByID,
 } from '../services/questionnaires.js';
@@ -30,3 +31,14 @@ export const getQuestionnaireByIDController = async (req, res, next) => {
     data: questionnaire,
   });
 };
+
+export const createQuestionnaireController = async (req, res) => {
+  const questionnaire = await createQuestionnaire(req.body);
+  res.status(201).json({
+    status: 201,
+    message: `Successfully created a questionnaire!`,
+    data: questionnaire,
+  });
+};
+
+// add delete + update + answer
